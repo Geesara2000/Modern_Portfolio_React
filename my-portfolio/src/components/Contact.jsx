@@ -1,6 +1,32 @@
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
 
 function Contact() {
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "782a4aab-94ed-4dc5-b571-615219bf80a4");
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: json
+    }).then((res) => res.json());
+
+    if (res.success) {
+      alert("Success", res);
+    }else{
+      alert("Try Again", res);
+    }
+  };
+
   return (
     <div className="flex justify-between items-center p-10">
       
@@ -16,7 +42,7 @@ function Contact() {
           {/* Email */}
           <div className="flex items-center space-x-3 ">
             <FaEnvelope className="text-2xl" />
-            <p>geesaraimal12@gmail.com</p>
+            <p>geesaradesilva92@gmail.com</p>
           </div>
           {/* Phone */}
           <div className="flex items-center space-x-3">
@@ -32,31 +58,37 @@ function Contact() {
       </div>
 
       {/* Right Section */}
-      <div className="w-1/2 space-y-4">
+      <form onSubmit={onSubmit} className="w-1/2 space-y-4">
         
         <input
           type="text"
+          name='name'
           placeholder="Enter your name"
           className="w-full p-4 text-lg bg-black text-white rounded-md outline-none focus:ring-2 focus:ring-stone-400"
         />
         <input
           type="email"
+          name='email'
           placeholder="Enter your email"
           className="w-full p-4 text-lg bg-black text-white rounded-md outline-none focus:ring-2 focus:ring-stone-400"
         />
         <textarea
           placeholder="Enter your message"
           rows="4"
+          name='message'
           className="w-full p-4 text-lg bg-black text-white rounded-md outline-none focus:ring-2 focus:ring-stone-400"
         ></textarea>
         <button
+          type='submit'
           className="bg-gradient-to-r bg-stone-200 text-black py-3 px-6 rounded-md text-lg font-semibold hover:opacity-90"
         >
           Submit now
         </button>
-      </div>
+      </form>
     </div>
   );
 }
+
+
 
 export default Contact;
