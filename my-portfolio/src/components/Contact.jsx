@@ -1,6 +1,11 @@
+import React, { useRef } from 'react';
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
 
 function Contact() {
+  // Create refs for the input fields
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
+  const messageRef = useRef(null);
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -22,23 +27,26 @@ function Contact() {
 
     if (res.success) {
       alert("Success", res);
-    }else{
+      // Clear input fields after successful submission
+      nameRef.current.value = '';
+      emailRef.current.value = '';
+      messageRef.current.value = '';
+    } else {
       alert("Try Again", res);
     }
   };
 
   return (
     <div className="flex justify-between items-center p-10">
-      
       <div className="w-1/2 space-y-4">
-        <h2 className=" pb-10 font-semibold text-6xl ">
+        <h2 className="pb-10 font-semibold text-6xl ">
           Let's talk
         </h2>
-        <p className="text-lg  text-stone-400 pb-10">
+        <p className="text-lg text-stone-400 pb-10">
           I'm currently available to take on new projects, so feel free to send me a message
           about anything that you want me to work on. You can contact anytime.
         </p>
-        <div className="space-y-2  text-stone-400">
+        <div className="space-y-2 text-stone-400">
           {/* Email */}
           <div className="flex items-center space-x-3 ">
             <FaEnvelope className="text-2xl" />
@@ -59,28 +67,30 @@ function Contact() {
 
       {/* Right Section */}
       <form onSubmit={onSubmit} className="w-1/2 space-y-4">
-        
         <input
           type="text"
           name='name'
           placeholder="Enter your name"
-          className="w-full p-4 text-lg bg-black text-white rounded-md outline-none focus:ring-2 focus:ring-stone-400"
+          ref={nameRef}  // Attach ref here
+          className="w-full p-4 text-lg bg-stone-50 text-black rounded-md outline-none focus:ring-2 focus:ring-stone-400"
         />
         <input
           type="email"
           name='email'
           placeholder="Enter your email"
-          className="w-full p-4 text-lg bg-black text-white rounded-md outline-none focus:ring-2 focus:ring-stone-400"
+          ref={emailRef}  // Attach ref here
+          className="w-full p-4 text-lg bg-stone-50 text-black rounded-md outline-none focus:ring-2 focus:ring-stone-400"
         />
         <textarea
           placeholder="Enter your message"
           rows="4"
           name='message'
-          className="w-full p-4 text-lg bg-black text-white rounded-md outline-none focus:ring-2 focus:ring-stone-400"
+          ref={messageRef}  // Attach ref here
+          className="w-full p-4 text-lg bg-stone-50 text-black rounded-md outline-none focus:ring-2 focus:ring-stone-400"
         ></textarea>
         <button
           type='submit'
-          className="bg-gradient-to-r bg-stone-200 text-black py-3 px-6 rounded-md text-lg font-semibold hover:opacity-90"
+          className="bg-gradient-to-r bg-gray-900 text-white py-3 px-6 rounded-md text-lg font-semibold hover:opacity-80"
         >
           Submit now
         </button>
@@ -88,7 +98,5 @@ function Contact() {
     </div>
   );
 }
-
-
 
 export default Contact;
