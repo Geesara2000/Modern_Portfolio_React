@@ -3,6 +3,8 @@ import Hero from "./components/Hero"
 import Navbar from "./components/Navbar"
 import Projects from "./components/Projects"
 import Technologies from "./components/Technologies"
+import TopNavbar from "./components/TopNavbar"
+
 
 
 const App = () => {
@@ -13,7 +15,7 @@ const App = () => {
       </div>
       </div>
 
-
+     
 
       <div className="cotainer mx-auto px-8">
           <Navbar/>
@@ -21,6 +23,7 @@ const App = () => {
           <Technologies />
           <Projects />
           <Contact />
+          <TopNavbar />
       </div>
     </div>
 

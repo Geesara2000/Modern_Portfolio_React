@@ -1,5 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
+import { CONTACT } from '../constants';
+import {motion} from "framer-motion"
+
+
 
 function Contact() {
   // Create refs for the input fields
@@ -61,30 +65,35 @@ function Contact() {
   };
 
   return (
+    <div id='contact'>
+    <motion.h2 
+        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity:0, y: -100 }}
+        transition={{ duration: 1.5 }}
+        className="py-20  text-center text-4xl">Contact me</motion.h2>
     <div className="flex justify-between items-center p-10">
       <div className="w-1/2 space-y-4">
         <h2 className="pb-10 font-semibold text-6xl ">
           Let's talk
         </h2>
         <p className="text-lg text-stone-400 pb-10">
-          I'm currently available to take on new projects, so feel free to send me a message
-          about anything that you want me to work on. You can contact anytime.
+        I'm Geesara De Silva, an undergraduate student at Sabaragamuwa University of Sri Lanka, pursuing a degree in Computing and Information Systems. I am passionate about technology and am working towards becoming a skilled full-stack developer.
         </p>
         <div className="space-y-2 text-stone-400">
           {/* Email */}
           <div className="flex items-center space-x-3 ">
             <FaEnvelope className="text-2xl" />
-            <p>geesaradesilva92@gmail.com</p>
+            <p>{CONTACT.email}</p>
           </div>
           {/* Phone */}
           <div className="flex items-center space-x-3">
             <FaPhoneAlt className="text-2xl" />
-            <p>+94-76 852 7720</p>
+            <p>{CONTACT.phoneNo}</p>
           </div>
           {/* Location */}
           <div className="flex items-center space-x-3">
             <FaMapMarkerAlt className="text-2xl" />
-            <p>Colombo, Sri Lanka</p>
+            <p>{CONTACT.address}</p>
           </div>
         </div>
       </div>
@@ -120,6 +129,7 @@ function Contact() {
           Submit now
         </button>
       </form>
+    </div>
     </div>
   );
 }
