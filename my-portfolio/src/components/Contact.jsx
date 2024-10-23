@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
 
 function Contact() {
@@ -6,11 +6,35 @@ function Contact() {
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const messageRef = useRef(null);
+  
+  // State to manage error messages
+  const [error, setError] = useState('');
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
 
+    // Get values from refs
+    const name = nameRef.current.value.trim();
+    const email = emailRef.current.value.trim();
+    const message = messageRef.current.value.trim();
+
+    if(name === ""){
+      setError('Please fill in name field.');
+      return;
+    } else if(email === ""){
+      setError('Please fill in email field.');
+      return;
+    } else if(message === ""){
+      setError('Please fill in message field.');
+      return;
+    } else {
+      // All fields are filled correctly, proceed with further logic
+      setError(''); // Clear any previous errors
+      // Add your form submission logic here
+    }
+    
+
+    const formData = new FormData(event.target);
     formData.append("access_key", "782a4aab-94ed-4dc5-b571-615219bf80a4");
 
     const object = Object.fromEntries(formData);
@@ -67,6 +91,7 @@ function Contact() {
 
       {/* Right Section */}
       <form onSubmit={onSubmit} className="w-1/2 space-y-4">
+        {error && <p className="text-red-500">{error}</p>} {/* Display error message */}
         <input
           type="text"
           name='name'
