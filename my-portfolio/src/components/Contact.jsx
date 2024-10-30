@@ -73,10 +73,10 @@ function Contact() {
         className="py-20  text-center text-4xl">Contact me</motion.h2>
     <div className="flex justify-between items-center p-10">
       <div className="w-1/2 space-y-4">
-        <h2 className="pb-10 font-semibold text-6xl ">
+        <h2 className=" font-semibold text-6xl ">
           Let's talk
         </h2>
-        <p className="text-lg text-stone-400 pb-10">
+        <p className="text-lg max-w-lg text-stone-400 py-10">
         I'm Geesara De Silva, an undergraduate student at Sabaragamuwa University of Sri Lanka, pursuing a degree in Computing and Information Systems. I am passionate about technology and am working towards becoming a skilled full-stack developer.
         </p>
         <div className="space-y-2 text-stone-400">
