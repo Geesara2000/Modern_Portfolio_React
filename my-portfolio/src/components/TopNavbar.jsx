@@ -22,7 +22,7 @@ const TopNavbar = () => {
     </a>
   </li>
   <li>
-    <a href="#contact" className="flex items-center space-x-2 hover:-white ">
+    <a href="#contact" className="flex items-center space-x-2 hover:text-white ">
       <span className="text-lg hidden md:inline font-semibold">Contact me</span>
     </a>
   </li>
