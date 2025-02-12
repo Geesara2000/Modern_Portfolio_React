@@ -1,5 +1,5 @@
 import project1 from "../assets/projects/project-1.png"
-import project2 from "../assets/projects/project-2.webp";
+import project2 from "../assets/projects/project-2.png";
 import project3 from "../assets/projects/project-3.png";
 import project4 from "../assets/projects/project-4.png";
 
@@ -46,13 +46,13 @@ export const PROJECTS = [
       "Developed a Construction Web App for efficient project management and client collaboration.",
     technologies: ["React" ,"Bootstrap" ,"Laravel"],
   },
-  // {
-  //   title: "Travel Booking Web App",
-  //   image: project2,
-  //   description:
-  //     "Developed a user-friendly travel booking web app, allowing customers to easily search, book, and manage their travel itineraries.",
-  //   technologies: ["React" ,"tailwind" ,"Laravel"],
-  // },
+  {
+    title: "Travel Booking Web App",
+    image: project2,
+    description:
+      "Developed a user-friendly travel booking web app, allowing customers to easily search, book, and manage their travel itineraries.",
+    technologies: ["React" ,"tailwind" ,"Laravel"],
+  },
   {
     title: "Online Food Delivery Web App",
     image: project3,
